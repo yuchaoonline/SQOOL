@@ -354,6 +354,7 @@ public class GUI extends javax.swing.JFrame {
         CourseTable.getColumnModel().getColumn(2).setHeaderValue("Credits");
         CourseTable.getColumnModel().getColumn(3).setHeaderValue("Grade");
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         InfoBox.setViewportView(jTextArea1);
