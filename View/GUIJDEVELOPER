@@ -57,7 +57,7 @@ public class GUI extends javax.swing.JFrame {
         StudentTable = new javax.swing.JTable();
         CourseTableScrollPane = new javax.swing.JScrollPane();
         CourseTable = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        InfoBox = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         SearchButton = new javax.swing.JButton();
         AddButton = new javax.swing.JButton();
@@ -356,7 +356,7 @@ public class GUI extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        InfoBox.setViewportView(jTextArea1);
 
         SearchButton.setText("Search");
 
@@ -412,7 +412,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(SearchButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(AddButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(RegisterButton, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(InfoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(SearchByCourseLabel)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -445,7 +445,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(45, 45, 45)
                         .addComponent(SearchButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(InfoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46)
                         .addComponent(RegisterButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -562,6 +562,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel CoursesLabel;
     private javax.swing.JPanel CoursesPanel;
     private javax.swing.JFormattedTextField FNameTextField;
+    private javax.swing.JScrollPane InfoBox;
     private javax.swing.JFormattedTextField LNameTextField;
     private javax.swing.JButton RegisterButton;
     private javax.swing.JLabel SeachbyStudentLabel;
@@ -572,7 +573,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTable StudentTable;
     private javax.swing.JScrollPane StudentTableScrollPane;
     private javax.swing.JPanel StudentsPanel;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 
