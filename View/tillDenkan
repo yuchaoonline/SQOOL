@@ -1,0 +1,29 @@
+//import View.MainGUI;
+
+import java.util.Scanner;
+import Controller.Controller;
+
+public class ExecuteProgram {
+	public static void main(String[] args) {
+
+		String socNmbr;
+		String courseCode;
+		
+		Scanner scan = new Scanner(System.in);
+		
+		try {
+
+			courseCode = scan.next();
+			
+			
+			
+ //           new MainGUI().setVisible(true);
+			
+		} catch (Exception e) {
+
+			System.out.println(e); // Print possible exception!
+			System.exit(0);
+			
+		}
+	}
+}
