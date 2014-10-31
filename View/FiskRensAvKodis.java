@@ -197,7 +197,7 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
 
         //TEXT FIELDS//
         
-		//TEXT FIELDS MAIN WINDOW
+			//TEXT FIELDS MAIN WINDOW
         
         FNameTextField.setText("First Name");
         FNameTextField.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
@@ -239,7 +239,8 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
 			}
 		});
         
-        	//TEXT FIELDS IN ADD STUDENT OR COURSE WINDOW
+        		//TEXT FIELDS IN ADD STUDENT OR COURSE WINDOW
+		
         AddFirstNameTextField.setText("First Name");
         AddFirstNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -682,7 +683,7 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
     
     //METHODS//
     
-    //METHODS IN MAIN WINDOW
+    	//METHODS IN MAIN WINDOW
     
     private void FNameTextFieldMouseClicked(java.awt.event.MouseEvent evt) {
         // CLEARS FIRST NAME SEARCH FIELD WHEN CLICKED BC FOCUSED ON START
@@ -759,7 +760,7 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
     	//INSERT ACTION FOR CURRENT STUDENTS BUTTON
     }
     
-    //METHODS IN ADD STUDENT OR COURSE WINDOW
+    	//METHODS IN ADD STUDENT OR COURSE WINDOW
     
     private void CloseWindow1ButtonActionPerformed(java.awt.event.ActionEvent evt) {
     	//CLOSES ADD STUDENT OR COURSE WINDOW FROM STUDENT TAB
