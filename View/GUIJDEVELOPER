@@ -62,7 +62,7 @@ public class GUI extends javax.swing.JFrame {
         SearchButton = new javax.swing.JButton();
         AddButton = new javax.swing.JButton();
         RegisterButton = new javax.swing.JButton();
-        SeachbyStudentLabel = new javax.swing.JLabel();
+        SeachByStudentLabel = new javax.swing.JLabel();
         SearchByCourseLabel = new javax.swing.JLabel();
 
         AddFirstNameTextField.setText("First Name");
@@ -369,7 +369,7 @@ public class GUI extends javax.swing.JFrame {
 
         RegisterButton.setText("Register Student On Course");
 
-        SeachbyStudentLabel.setText("Search by:");
+        SeachByStudentLabel.setText("Search by:");
 
         SearchByCourseLabel.setText("Search by:");
 
@@ -389,7 +389,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(FNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
                                 .addComponent(LNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(SeachbyStudentLabel))
+                            .addComponent(SeachByStudentLabel))
                         .addGap(31, 31, 31)
                         .addComponent(SocNmbrTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -429,7 +429,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SearchByCourseLabel)
-                            .addComponent(SeachbyStudentLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(SeachByStudentLabel, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(FNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -565,7 +565,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane InfoBox;
     private javax.swing.JFormattedTextField LNameTextField;
     private javax.swing.JButton RegisterButton;
-    private javax.swing.JLabel SeachbyStudentLabel;
+    private javax.swing.JLabel SeachByStudentLabel;
     private javax.swing.JButton SearchButton;
     private javax.swing.JLabel SearchByCourseLabel;
     private javax.swing.JFormattedTextField SocNmbrTextField;
