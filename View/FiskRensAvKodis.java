@@ -1,6 +1,5 @@
 import java.awt.event.MouseAdapter;
 
-
 public class FiskRensAvKodis extends javax.swing.JFrame {
 
 	public FiskRensAvKodis() {
@@ -64,93 +63,98 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
         
         
         //BUTTONS//
+        
+        //BUTTONS IN MAIN WINDOW
         SearchStudentButton.setText("Search For Students");
         SearchStudentButton.addActionListener(new java.awt.event.ActionListener(){
         	public void actionPerformed(java.awt.event.ActionEvent evt){
         		SearchStudentButtonActionPerformed(evt);
         	}
-        };
+        });
 
         UpdateButton.setText("Update");
         UpdateButton.addActionListener(new java.awt.event.ActionListener(){
         	public void actionPerformed(java.awt.event.ActionEvent evt){
         		UpdateButtonActionPerformed(evt);
         	}
-        };
+        });
 
         RegisterButton.setText("Register Student On Course");
         RegisterButton.addActionListener(new java.awt.event.ActionListener(){
         	public void actionPerformed(java.awt.event.ActionEvent evt){
         		RegisterButtonActionPerformed(evt);
         	}
-        };
+        });
         
-        AddStudentButton.setText("Add Student");
-        AddStudentButton.addActionListener(new java.awt.event.ActionListener(){
-        	public void actionPerformed(java.awt.event.ActionEvent evt){
-        		AddStudentButtonActionPerformed(evt);
-        	}
-        };
-        
-        AddCourseButton.setText("Add Course");
-        AddCourseButton.addActionListener(new java.awt.event.ActionListener(){
-        	public void actionPerformed(java.awt.event.ActionEvent evt){
-        		AddCourseButtonActionPerformed(evt);
-        	}
-        };
 
         SearchCourseButton.setText("Search For Courses");
         SearchCourseButton.addActionListener(new java.awt.event.ActionListener(){
         	public void actionPerformed(java.awt.event.ActionEvent evt){
         		SearchCourseButtonActionPerformed(evt);
         	}
-        };
+        });
 
         DeleteStudentButton.setText("Delete Student");
         DeleteStudentButton.addActionListener(new java.awt.event.ActionListener(){
         	public void actionPerformed(java.awt.event.ActionEvent evt){
         		DeleteStudentButtonActionPerformed(evt);
         	}
-        };
+        });
 
         DeleteCourseButton.setText("Delete Course");
         DeleteCourseButton.addActionListener(new java.awt.event.ActionListener(){
         	public void actionPerformed(java.awt.event.ActionEvent evt){
         		DeleteCourseButtonActionPerformed(evt);
         	}
-        };
+        });
 
         GradeStudentButton.setText("Grade Student");
         GradeStudentButton.addActionListener(new java.awt.event.ActionListener(){
         	public void actionPerformed(java.awt.event.ActionEvent evt){
         		GradeStudentButtonActionPerformed(evt);
         	}
-        };
+        });
 
         StudentHistoryButton.setText("Student History");
         StudentHistoryButton.addActionListener(new java.awt.event.ActionListener(){
         	public void actionPerformed(java.awt.event.ActionEvent evt){
         		StudentHistoryButtonActionPerformed(evt);
         	}
-        };
+        });
         CurrentCoursesButton.setText("Current Courses");
         CurrentCoursesButton.addActionListener(new java.awt.event.ActionListener(){
         	public void actionPerformed(java.awt.event.ActionEvent evt){
         		CurrentCoursesButtonActionPerformed(evt);
         	}
-        };
+        });
 
         CourseHistoryButton.setText("Course History");
         CourseHistoryButton.addActionListener(new java.awt.event.ActionListener(){
         	public void actionPerformed(java.awt.event.ActionEvent evt){
         		CourseHistoryButtonActionPerformed(evt);
         	}
-        };
+        });
 
         CurrentStudentsButton.setText("Current Students");
         CurrentStudentsButton.addActionListener(new java.awt.event.ActionListener(){
         	public void actionPerformed(java.awt.event.ActionEvent evt){
         		CurrentStudentsButtonActionPerformed(evt);
+        	}
+        });
+        
+        AddButton.setText("Add Student or Course");
+        AddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddButtonActionPerformed(evt);
+            }
+        });
+        
+        //BUTTONS IN ADD STUDENT OR COURSE WINDOW
+        
+        AddStudentButton.setText("Add Student");
+        AddStudentButton.addActionListener(new java.awt.event.ActionListener(){
+        	public void actionPerformed(java.awt.event.ActionEvent evt){
+        		AddStudentButtonActionPerformed(evt);
         	}
         });
         
@@ -168,7 +172,12 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
             }
         });
         
-        
+        AddCourseButton.setText("Add Course");
+        AddCourseButton.addActionListener(new java.awt.event.ActionListener(){
+        	public void actionPerformed(java.awt.event.ActionEvent evt){
+        		AddCourseButtonActionPerformed(evt);
+        	}
+        });
 
         ClearCourseFieldsButton.setText("Clear Fields");
         ClearCourseFieldsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -184,99 +193,12 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
             }
         });
         
-        AddButton.setText("Add Student or Course");
-        AddButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddButtonActionPerformed(evt);
-            }
-        });
-        
         //END BUTTONS//
 
         //TEXT FIELDS//
-        AddFirstNameTextField.setText("First Name");
-        AddFirstNameTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddFirstNameTextFieldMouseClicked(evt);
-            }
-        });
-
-        AddLastNameTextField.setText("Last Name");
-        AddLastNameTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddLastNameTextFieldMouseClicked(evt);
-            }
-        });
-
-        AddSocNmbrTextField.setText("Social Security Number");
-        AddSocNmbrTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddSocNmbrTextFieldMouseClicked(evt);
-            }
-        });
-        AddSocNmbrTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddSocNmbrTextFieldActionPerformed(evt);
-            }
-        });
-
-        AddAddressTextField.setText("Address");
-        AddAddressTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddAddressTextFieldMouseClicked(evt);
-            }
-        });
-
-        AddCityTextField.setText("City");
-        AddCityTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddCityTextFieldMouseClicked(evt);
-            }
-        });
-
-        AddZipTextField.setText("Zip Code");
-        AddZipTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddZipTextFieldMouseClicked(evt);
-            }
-        });
-
-        AddPhoneNmbrTextField.setText("Phone Number");
-        AddPhoneNmbrTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddPhoneNmbrTextFieldMouseClicked(evt);
-            }
-        });
-
-        AddEmailTextField.setText("Email");
-        AddEmailTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddEmailTextFieldMouseClicked(evt);
-            }
-        });
-
-        AddCourseCodeTextField.setText("Course Code");
-        AddCourseCodeTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddCourseCodeTextFieldMouseClicked(evt);
-            }
-        });
-
-        AddCourseNameTextField.setText("Course Name");
-        AddCourseNameTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddCourseNameTextFieldMouseClicked(evt);
-            }
-        });
-
-        AddCourseCreditsTextField.setText("Course Credits");
-        AddCourseCreditsTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AddCourseCreditsTextFieldMouseClicked(evt);
-            }
-        });
         
-
+		//TEXT FIELDS MAIN WINDOW
+        
         FNameTextField.setText("First Name");
         FNameTextField.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         FNameTextField.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -284,52 +206,117 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
                 FNameTextFieldMouseClicked(evt);
             }
         });
-        FNameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FNameTextFieldActionPerformed(evt);
-            }
-        });
 
-        LNameTextField.setText("Last Name");
-        LNameTextField.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        LNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                LNameTextFieldFocusGained(evt);
-            }
-        });
-        LNameTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                LNameTextFieldMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                LNameTextFieldMouseEntered(evt);
-            }
-        });
-
-        SocNmbrTextField.setText("Soc. Nmbr");
-        SocNmbrTextField.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        SocNmbrTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SocNmbrTextFieldMouseClicked(evt);
-            }
-        });
-
-        CourseNameTextField.setText("Course Name");
-        CourseNameTextField.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        CourseNameTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CourseNameTextFieldMouseClicked(evt);
-            }
-        });
-
-        CourseCodeTextField.setText("Code");
-        CourseCodeTextField.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        CourseCodeTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CourseCodeTextFieldMouseClicked(evt);
-            }
-        });
+		LNameTextField.setText("Last Name");
+		LNameTextField.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+		LNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+		    public void focusGained(java.awt.event.FocusEvent evt) {
+		        LNameTextFieldFocusGained(evt);
+		    }
+		});
+		
+		SocNmbrTextField.setText("Soc. Nmbr");
+		SocNmbrTextField.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+		SocNmbrTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+			public void focusGained(java.awt.event.FocusEvent evt){
+				SocNmbrTextFieldFocusGained(evt);
+				}
+		});
+		
+		CourseNameTextField.setText("Course Name");
+		CourseNameTextField.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+		CourseNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+			public void focusGained(java.awt.event.FocusEvent evt){
+				CourseNameTextFieldFocusGained(evt);
+			}
+		});
+		
+		CourseCodeTextField.setText("Course Code");
+		CourseCodeTextField.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+		CourseCodeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+			public void focusGained(java.awt.event.FocusEvent evt){
+				CourseCodeTextFieldFocusGained(evt);
+			}
+		});
         
+        	//TEXT FIELDS IN ADD STUDENT OR COURSE WINDOW
+        AddFirstNameTextField.setText("First Name");
+        AddFirstNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                AddFirstNameTextFieldFocusGained(evt);
+            }
+        });
+
+        AddLastNameTextField.setText("Last Name");
+        AddLastNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                AddLastNameTextFieldFocusGained(evt);
+            }
+        });
+
+        AddSocNmbrTextField.setText("Social Security Number");
+        AddSocNmbrTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                AddSocNmbrTextFieldFocusGained(evt);
+            }
+        });
+
+        AddAddressTextField.setText("Address");
+        AddAddressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                AddAddressTextFieldFocusGained(evt);
+            }
+        });
+
+        AddCityTextField.setText("City");
+        AddCityTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                AddCityTextFieldFocusGained(evt);
+            }
+        });
+
+        AddZipTextField.setText("Zip Code");
+        AddZipTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                AddZipTextFieldFocusGained(evt);
+            }
+        });
+
+        AddPhoneNmbrTextField.setText("Phone Number");
+        AddPhoneNmbrTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                AddPhoneNmbrTextFieldFocusGained(evt);
+            }
+        });
+
+        AddEmailTextField.setText("Email");
+        AddEmailTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                AddEmailTextFieldFocusGained(evt);
+            }
+        });
+
+        AddCourseCodeTextField.setText("Course Code");
+        AddCourseCodeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                AddCourseCodeTextFieldFocusGained(evt);
+            }
+        });
+
+        AddCourseNameTextField.setText("Course Name");
+        AddCourseNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                AddCourseNameTextFieldFocusGained(evt);
+            }
+        });
+
+        AddCourseCreditsTextField.setText("Course Credits");
+        AddCourseCreditsTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                AddCourseCreditsTextFieldFocusGained(evt);
+            }
+        });
+
         //END TEXT FIELDS//
         
         //PANES//
@@ -416,7 +403,8 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
         StudentTable.getColumnModel().getColumn(5).setHeaderValue("Zip");
         StudentTable.getColumnModel().getColumn(6).setHeaderValue("Telephone Number");
         StudentTable.getColumnModel().getColumn(7).setHeaderValue("Email");
-
+        
+        CourseTable.setFont(new java.awt.Font("Dialog", 0, 10));
         CourseTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -467,6 +455,7 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         
         //END TABLES//
+        
         // PANELS//
         
         javax.swing.GroupLayout StudentsPanelLayout = new javax.swing.GroupLayout(StudentsPanel);
@@ -628,7 +617,7 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(CoursesLabel)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(CourseCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(CourseCodeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(25, 25, 25)
                                         .addComponent(SearchCourseButton))))
                             .addComponent(CourseTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -691,33 +680,99 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
     }//GEN-END:initComponents
 
     
+    //METHODS//
     
-    private void FNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FNameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FNameTextFieldActionPerformed
+    //METHODS IN MAIN WINDOW
+    
+    private void FNameTextFieldMouseClicked(java.awt.event.MouseEvent evt) {
+        // CLEARS FIRST NAME SEARCH FIELD WHEN CLICKED BC FOCUSED ON START
+            FNameTextField.setText("");
+    }
 
-    private void AddSocNmbrTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddSocNmbrTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AddSocNmbrTextFieldActionPerformed
+    private void LNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS LAST NAME SEARCH FIELD IN MAIN WINDOW WHEN FOCUSED
+    		LNameTextField.setText("");
+    }
+    
+    private void SocNmbrTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS SOCIAL SECURITY NUMBER SEARCH FIELD IN MAIN WINDOW WHEN FOCUSED
+    		SocNmbrTextField.setText("");
+    }
 
-    private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
-        // TODO add your handling code here:
+    private void CourseNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS COURSE NAME SEARCH FIELD IN MAIN WINDOW WHEN FOCUSED
+            CourseNameTextField.setText("");
+    }
+
+    private void CourseCodeTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS COURSE CODE SEARCH FIELD IN MAIN WINDOW WHEN FOCUSED
+            CourseCodeTextField.setText("");
+    }
+
+    private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	//OPENS ADD STUDENT OR COURSE WINDOW
         AddDialog.setVisible(true);
         AddDialog.setSize(350,350);
-    }//GEN-LAST:event_AddButtonActionPerformed
+    }
+    
+    private void SearchStudentButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	//INSERT ACTION FOR SEARCH STUDENT BUTTON
+    }
 
-    private void CloseWindow1ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseWindow1ButtonActionPerformed
-        // TODO add your handling code here:
+    private void SearchCourseButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	//INSERT ACTION FOR SEARCH COURSE BUTTON
+    }
+    
+    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	//INSERT ACTION FOR UPDATE BUTTON
+    }
+    
+    private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	//INSERT ACTION FOR REGISTER STUDENT ON COURSE BUTTON
+    }
+    
+    private void DeleteStudentButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	//INSERT ACTION FOR DELETE STUDENT BUTTON
+    }
+ 
+    private void DeleteCourseButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	//INSERT ACTION FOR DELETE COURSE BUTTON
+    }
+    
+    private void GradeStudentButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	//INSERT ACTION FOR GRADE STUDENT BUTTON
+    }
+ 
+    private void StudentHistoryButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	//INSERT ACTION FOR STUDENT HISTORY BUTTON
+    }
+    
+    private void CurrentCoursesButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	//INSERT ACTION FOR CURRENT COURSES BUTTON
+    }
+    
+    private void CourseHistoryButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	//INSERT ACTION FOR COURSE HISTORY BUTTON
+    }
+    
+    private void CurrentStudentsButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	//INSERT ACTION FOR CURRENT STUDENTS BUTTON
+    }
+    
+    //METHODS IN ADD STUDENT OR COURSE WINDOW
+    
+    private void CloseWindow1ButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	//CLOSES ADD STUDENT OR COURSE WINDOW FROM STUDENT TAB
         AddDialog.setVisible(false);
-    }//GEN-LAST:event_CloseWindow1ButtonActionPerformed
+    }
 
-    private void CloseWindow2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseWindow2ButtonActionPerformed
-        // TODO add your handling code here:
+    private void CloseWindow2ButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	//CLOSES ADD STUDENT OR COURSE WINDOW FROM COURSE TAB
         AddDialog.setVisible(false);
-    }//GEN-LAST:event_CloseWindow2ButtonActionPerformed
+    }
 
-    private void ClearStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearStudentButtonActionPerformed
-        // TODO add your handling code here:
+    private void ClearStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	//CLEAR ALL FIELDS IN ADD STUDENT TAB
         AddFirstNameTextField.setText("First Name");
         AddLastNameTextField.setText("Last Name");
         AddSocNmbrTextField.setText("Social Security Number");
@@ -726,109 +781,80 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
         AddZipTextField.setText("Zip Code");
         AddPhoneNmbrTextField.setText("Telephone Number");
         AddEmailTextField.setText("Email");
-    }//GEN-LAST:event_ClearStudentButtonActionPerformed
+    }
 
-    private void ClearCourseFieldsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearCourseFieldsButtonActionPerformed
-        // TODO add your handling code here:
+    private void ClearCourseFieldsButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    	//CLEAR ALL FIELDS IN ADD COURSE TAB
         AddCourseCodeTextField.setText("Course Code");
         AddCourseNameTextField.setText("Course Name");
         AddCourseCreditsTextField.setText("Course Credits");
-    }//GEN-LAST:event_ClearCourseFieldsButtonActionPerformed
+    }
 
-    private void AddFirstNameTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddFirstNameTextFieldMouseClicked
-        // TODO add your handling code here:
-        
+    private void AddFirstNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS FIRST NAME FIELD IN ADD STUDENT TAB WHEN FOCUSED
             AddFirstNameTextField.setText("");
-          
-    
-    }//GEN-LAST:event_AddFirstNameTextFieldMouseClicked
+    }
 
-    private void AddLastNameTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddLastNameTextFieldMouseClicked
-        // TODO add your handling code here:
+    private void AddLastNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS LAST NAME FIELD IN ADD STUDENT TAB WHEN FOCUSED
             AddLastNameTextField.setText("");
-    }//GEN-LAST:event_AddLastNameTextFieldMouseClicked
+    }
 
-    private void AddSocNmbrTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddSocNmbrTextFieldMouseClicked
-            AddSocNmbrTextField.setText("");        // TODO add your handling code here:
-    }//GEN-LAST:event_AddSocNmbrTextFieldMouseClicked
+    private void AddSocNmbrTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS SOCIAL SECURITY NUMBER FIELD IN ADD STUDENT TAB WHEN FOCUSED
+            AddSocNmbrTextField.setText("");
+    }
 
-    private void AddAddressTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddAddressTextFieldMouseClicked
-        // TODO add your handling code here:
+    private void AddAddressTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS ADDRESS FIELD IN ADD STUDENT TAB WHEN FOCUSED
             AddAddressTextField.setText("");
-    }//GEN-LAST:event_AddAddressTextFieldMouseClicked
+    }
 
-    private void AddCityTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddCityTextFieldMouseClicked
-        // TODO add your handling code here:
+    private void AddCityTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS CITY FIELD IN ADD STUDENT TAB WHEN FOCUSED
             AddCityTextField.setText("");
-    }//GEN-LAST:event_AddCityTextFieldMouseClicked
+    }
 
-    private void AddZipTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddZipTextFieldMouseClicked
-        // TODO add your handling code here:
+    private void AddZipTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS ZIP CODE FIELD IN ADD STUDENT TAB WHEN FOCUSED
             AddZipTextField.setText("");
-    }//GEN-LAST:event_AddZipTextFieldMouseClicked
-
-    private void AddPhoneNmbrTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddPhoneNmbrTextFieldMouseClicked
-        // TODO add your handling code here:
+    }
+    
+    private void AddPhoneNmbrTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS PHONE NUMBER FIELD IN ADD STUDENT TAB WHEN FOCUSED
             AddPhoneNmbrTextField.setText("");
-    }//GEN-LAST:event_AddPhoneNmbrTextFieldMouseClicked
+    }
 
-    private void AddEmailTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddEmailTextFieldMouseClicked
-        // TODO add your handling code here:
-            AddEmailTextField.setText("");
-    }//GEN-LAST:event_AddEmailTextFieldMouseClicked
+    private void AddEmailTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS EMAIL FIELD IN ADD STUDENT TAB WHEN FOCUSED
+           AddEmailTextField.setText("");
+    }
 
-    private void AddCourseCodeTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddCourseCodeTextFieldMouseClicked
-        // TODO add your handling code here:
+    private void AddCourseCodeTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS COURSE CODE FIELD IN ADD COURSE WHEN FOCUSED
             AddCourseCodeTextField.setText("");
-    }//GEN-LAST:event_AddCourseCodeTextFieldMouseClicked
+    }
+    
+    private void AddCourseNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS COURSE NAME FIELD IN ADD COURSE WHEN FOCUSED
+    		AddCourseNameTextField.setText("");
+    }
 
-    private void AddCourseNameTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddCourseNameTextFieldMouseClicked
-        // TODO add your handling code here:
-            AddCourseNameTextField.setText("");
-    }//GEN-LAST:event_AddCourseNameTextFieldMouseClicked
+    private void AddCourseCreditsTextFieldFocusGained(java.awt.event.FocusEvent evt) {
+    	//CLEARS COURSE CREDITS FIELD IN ADD COURSE WHEN FOCUSED
+    		AddCourseCreditsTextField.setText("");
+    }
+    
+    private void AddStudentButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	//INSERT ACTION FOR ADD STUDENT BUTTON
+    }
+    
+    private void AddCourseButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	//INSERT ACTION FOR ADD COURSE BUTTON
+    }
+    
 
-    private void AddCourseCreditsTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddCourseCreditsTextFieldMouseClicked
-        // TODO add your handling code here:
-            AddCourseCreditsTextField.setText("");
-    }//GEN-LAST:event_AddCourseCreditsTextFieldMouseClicked
 
-    private void FNameTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FNameTextFieldMouseClicked
-        // TODO add your handling code here:
-            FNameTextField.setText("");
-    }//GEN-LAST:event_FNameTextFieldMouseClicked
-
-    private void LNameTextFieldMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LNameTextFieldMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LNameTextFieldMouseEntered
-
-    private void LNameTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LNameTextFieldMouseClicked
-        // TODO add your handling code here:
-            
-    }//GEN-LAST:event_LNameTextFieldMouseClicked
-
-    private void SocNmbrTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SocNmbrTextFieldMouseClicked
-        // TODO add your handling code here:
-            SocNmbrTextField.setText("");
-    }//GEN-LAST:event_SocNmbrTextFieldMouseClicked
-
-    private void CourseNameTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CourseNameTextFieldMouseClicked
-        // TODO add your handling code here:
-            CourseNameTextField.setText("");
-    }//GEN-LAST:event_CourseNameTextFieldMouseClicked
-
-    private void CourseCodeTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CourseCodeTextFieldMouseClicked
-        // TODO add your handling code here:
-            CourseCodeTextField.setText("");
-    }//GEN-LAST:event_CourseCodeTextFieldMouseClicked
-
-    private void LNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LNameTextFieldFocusGained
-        // TODO add your handling code here:
-            LNameTextField.setText("");
-    }//GEN-LAST:event_LNameTextFieldFocusGained
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -858,12 +884,7 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
             public void run() {
                 new FiskRensAvKodis().setVisible(true);
             }
-            
-            
-            
-        });
-   
-        
+            });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -916,13 +937,5 @@ public class FiskRensAvKodis extends javax.swing.JFrame {
     private javax.swing.JButton UpdateButton;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
-
-    
-    
-    
-    
-    
-    
-    
     
 }
