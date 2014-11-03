@@ -83,3 +83,36 @@
 
 		controller.registerCourse(courseName, courseCode, credits);
 	}
+
+	private void SearchStudentButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
+		
+		StudentModel.setRowCount(0); // DELETES ALL ROWS!
+		
+		
+		if( (SocNmbrTextField.getText().equals("") || SocNmbrTextField.getText().equals("Soc. Nmbr"))
+				& (LNameTextField.getText().equals("") || LNameTextField.getText().equals("Last Name"))
+				& (FNameTextField.getText().equals("") || FNameTextField.getText().equals("First Name")))
+				{ 
+				StudentTable.setModel(controller.getAllStudents(StudentModel));
+				}
+		
+		else if( (SocNmbrTextField.getText().equals("") || SocNmbrTextField.getText().equals("Soc. Nmbr"))
+				& (FNameTextField.getText().equals("") || FNameTextField.getText().equals("First Name")))
+		{	
+			String searchLastName = LNameTextField.getText();
+			StudentTable.setModel(controller.getStudentByLastName(searchLastName, StudentModel));
+		}
+		
+		else if( (FNameTextField.getText().equals("") || FNameTextField.getText().equals("First Name"))
+				& (LNameTextField.getText().equals("") || LNameTextField.getText().equals("Last Name")))
+		{
+			String socNmbr = SocNmbrTextField.getText();
+			StudentTable.setModel(controller.getStudent(socNmbr, StudentModel));
+		}
+		
+		else {
+			String searchFirstName = FNameTextField.getText();
+			StudentTable.setModel(controller.getStudentByFirstName(searchFirstName, StudentModel));
+			
+		}
+	}
