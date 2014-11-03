@@ -93,3 +93,34 @@ public DefaultTableModel getStudentByLastName(String searchLastName, DefaultTabl
 		return StudentTable;
 	}
 	
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ------------------------------------------ GET COURSE BY NAME! ------------------------------------------------ */
+	/* --------------------------------------------------------------------------------------------------------------- */
+
+	public DefaultTableModel getCourseByName(String courseDef, DefaultTableModel CourseTable) throws SQLException { // Finds a specific course!
+
+		con = connectionTest();
+
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT * from Course WHERE courseName like ?");
+		prepStmnt.setString(1, courseDef +"%");
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int columnNbr = metadata.getColumnCount();
+		
+		while (resSet.next()) {              
+			int i = 1;
+			while(i <= columnNbr) {
+				String courseName = resSet.getString(i++);
+				String courseNumber = resSet.getString(i++);
+				int credits = resSet.getInt(i++);
+				
+				Object[] courseData = {courseName, courseNumber, credits};
+				
+				CourseTable.addRow(courseData);
+			}
+		}
+		
+		return CourseTable; // MUST RETURN AS AN ARRAYLIST!
+	}
+
