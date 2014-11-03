@@ -53,7 +53,7 @@
 		});
 		
 		
-	//Metod för Add Student knapp. + lägg till try/catch 
+	//Metod för Add Student knapp.
 		private void AddStudentButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
 		//ADDS STUDENT TO STUDENT DATABASE
 		
