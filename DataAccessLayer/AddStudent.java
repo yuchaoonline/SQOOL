@@ -25,3 +25,71 @@
 		
 		System.out.println("Telephone added!");
 	}
+
+
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ---------------------------------------- GET STUDENT BY FIRST NAME -------------------------------------------- */
+	/* --------------------------------------------------------------------------------------------------------------- */
+
+	public DefaultTableModel getStudentByFirstName(String searchFirstName, DefaultTableModel StudentTable) throws SQLException { // Finds a specific student!
+		
+		con = connectionTest();
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT * from Student WHERE firstName like ?");
+		prepStmnt.setString(1, searchFirstName + "%");
+		ResultSet resSet = prepStmnt.executeQuery();
+		
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int columnNbr = metadata.getColumnCount();
+		
+		while (resSet.next()) {              
+			int i = 1;
+			while(i <= columnNbr) {
+
+				String firstName = resSet.getString(i++);
+				String lastName = resSet.getString(i++);
+				String socNmbr = resSet.getString(i++);
+				String address = resSet.getString(i++);
+				String city = resSet.getString(i++);
+				String zipCode = resSet.getString(i++);
+				
+				Object[] studentData = {firstName, lastName, socNmbr, address, city, zipCode};
+				
+				StudentTable.addRow(studentData);	
+			}
+		}
+		
+		return StudentTable;
+	}
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ---------------------------------------- GET STUDENT BY LAST NAME --------------------------------------------- */
+	/* --------------------------------------------------------------------------------------------------------------- */
+public DefaultTableModel getStudentByLastName(String searchLastName, DefaultTableModel StudentTable) throws SQLException { // Finds a specific student!
+		
+		con = connectionTest();
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT * from Student WHERE lastName like ?");
+		prepStmnt.setString(1, "%" +searchLastName + "%");
+		ResultSet resSet = prepStmnt.executeQuery();
+		
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int columnNbr = metadata.getColumnCount();
+		
+		while (resSet.next()) {              
+			int i = 1;
+			while(i <= columnNbr) {
+
+				String firstName = resSet.getString(i++);
+				String lastName = resSet.getString(i++);
+				String socNmbr = resSet.getString(i++);
+				String address = resSet.getString(i++);
+				String city = resSet.getString(i++);
+				String zipCode = resSet.getString(i++);
+				
+				Object[] studentData = {firstName, lastName, socNmbr, address, city, zipCode};
+				
+				StudentTable.addRow(studentData);	
+			}
+		}
+		
+		return StudentTable;
+	}
+	
