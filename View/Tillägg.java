@@ -84,6 +84,8 @@
 		controller.registerCourse(courseName, courseCode, credits);
 	}
 
+
+// STUDENT SÖK MED MED ALLA MÖJLIGHETER
 	private void SearchStudentButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
 		
 		StudentModel.setRowCount(0); // DELETES ALL ROWS!
@@ -115,4 +117,26 @@
 			StudentTable.setModel(controller.getStudentByFirstName(searchFirstName, StudentModel));
 			
 		}
+	}
+
+//KURS SÖK ÄVEN PÅ NAMN
+private void SearchCourseButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
+		
+		CourseModel.setRowCount(0); // DELETES ALL ROWS!
+		
+		if((CourseCodeTextField.getText().equals("") || CourseCodeTextField.getText().equals("Course Code"))
+			&& (CourseNameTextField.getText().equals("") || CourseNameTextField.getText().equals("Course Name"))){
+			CourseTable.setModel(controller.getAllCourses(CourseModel)); 
+		}
+		else if( CourseCodeTextField.getText().equals("") || CourseCodeTextField.getText().equals("Course Code")){
+				String courseDef = CourseNameTextField.getText();
+				CourseTable.setModel(controller.getCourseByName(courseDef, CourseModel));
+		}
+		
+		else {
+			String courseCode = CourseCodeTextField.getText();
+			CourseTable.setModel(controller.getCourse(courseCode, CourseModel)); 
+			
+		}
+		
 	}
