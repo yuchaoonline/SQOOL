@@ -55,7 +55,7 @@
 		
 	//Metod för Add Student knapp.
 		private void AddStudentButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
-		//ADDS STUDENT TO STUDENT DATABASE
+		//ADDS STUDENT TO STUDENT DATABASE W/ PHONE AND EMAIL
 		
 		String firstName = AddFirstNameTextField.getText();
 		String lastName = AddLastNameTextField.getText();
@@ -63,9 +63,15 @@
 		String adress = AddAddressTextField.getText();
 		String city = AddCityTextField.getText();
 		String zipCode = AddZipTextField.getText();
+		String telNmbr = AddPhoneNmbrTextField.getText();
+		String eMail = AddEmailTextField.getText();
+		
 		
 		controller.registerStudent(firstName, lastName, socNmbr, adress, city, zipCode);
+		controller.registerStudentPhone(telNmbr, socNmbr);
+		controller.registerStudentEmail(eMail, socNmbr);
 		} 
+	
 		
 		//Metod för Add Course knapp.
 		
