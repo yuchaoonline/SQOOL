@@ -13,3 +13,7 @@
 	public DefaultTableModel getStudentByLastName(String searchLastName, DefaultTableModel StudentModel) throws SQLException { // Finds a specific student by first name!
 		return dal.getStudentByLastName(searchLastName, StudentModel);
 	}
+
+	public DefaultTableModel getCourseByName(String courseDef, DefaultTableModel CourseModel) throws SQLException { // Finds a specific course!
+		return dal.getCourseByName(courseDef, CourseModel);
+	}
