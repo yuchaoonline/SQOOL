@@ -4,31 +4,35 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.TableModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import Controller.Controller;
 
 @SuppressWarnings("serial")
 public class MainGUI extends javax.swing.JFrame {
-	
+
 	Controller controller;
 	DefaultTableModel StudentModel;
 	DefaultTableModel CourseModel;
-	
+
 	public MainGUI() throws SQLException {
 		initializeComponents();
-	
+
 		controller = new Controller();
-		
+
 	}
-	
+
 	private void initializeComponents() {
-		
+
 		/*----------------------------------------------------------------------------------------------------------*/
 		/*--------------------------------------------- DECLARE OBJECTS! -------------------------------------------*/
 		/*----------------------------------------------------------------------------------------------------------*/
-		
-		
+
+
 		AddDialog = new javax.swing.JDialog();
 		AddTabbedPane = new javax.swing.JTabbedPane();
 		StudentsPanel = new javax.swing.JPanel();
@@ -79,7 +83,7 @@ public class MainGUI extends javax.swing.JFrame {
 		CurrentCoursesButton = new javax.swing.JButton();
 		CourseHistoryButton = new javax.swing.JButton();
 		CurrentStudentsButton = new javax.swing.JButton();
-		
+
 		/*----------------------------------------------------------------------------------------------------------*/
 		/*-------------------------------------------------- BUTTONS! ----------------------------------------------*/
 		/*----------------------------------------------------------------------------------------------------------*/
@@ -94,21 +98,26 @@ public class MainGUI extends javax.swing.JFrame {
 				}
 			}
 		});
-		
+
 		UpdateButton.setText("Update");
 		UpdateButton.addActionListener(new java.awt.event.ActionListener(){
 			public void actionPerformed(java.awt.event.ActionEvent evt){
 				UpdateButtonActionPerformed(evt);
 			}
 		});
-		
+
 		RegisterButton.setText("Register Student On Course");
 		RegisterButton.addActionListener(new java.awt.event.ActionListener(){
 			public void actionPerformed(java.awt.event.ActionEvent evt){
-				RegisterButtonActionPerformed(evt);
+				try {
+					RegisterButtonActionPerformed(evt);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
-		
+
 		SearchCourseButton.setText("Search For Courses");
 		SearchCourseButton.addActionListener(new java.awt.event.ActionListener(){
 			public void actionPerformed(java.awt.event.ActionEvent evt){
@@ -119,7 +128,7 @@ public class MainGUI extends javax.swing.JFrame {
 				}
 			}
 		});
-		
+
 		DeleteStudentButton.setText("Delete Student");
 		DeleteStudentButton.addActionListener(new java.awt.event.ActionListener(){
 			public void actionPerformed(java.awt.event.ActionEvent evt){
@@ -132,42 +141,58 @@ public class MainGUI extends javax.swing.JFrame {
 				DeleteCourseButtonActionPerformed(evt);
 			}
 		});
-		
+
 		GradeStudentButton.setText("Grade Student");
 		GradeStudentButton.addActionListener(new java.awt.event.ActionListener(){
 			public void actionPerformed(java.awt.event.ActionEvent evt){
 				GradeStudentButtonActionPerformed(evt);
 			}
 		});
-		
+
 		StudentHistoryButton.setText("Student History");
 		StudentHistoryButton.addActionListener(new java.awt.event.ActionListener(){
 			public void actionPerformed(java.awt.event.ActionEvent evt){
-				StudentHistoryButtonActionPerformed(evt);
+				try {
+					StudentHistoryButtonActionPerformed(evt);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		});
-		
+
 		CurrentCoursesButton.setText("Current Courses");
 		CurrentCoursesButton.addActionListener(new java.awt.event.ActionListener(){
 			public void actionPerformed(java.awt.event.ActionEvent evt){
-				CurrentCoursesButtonActionPerformed(evt);
+				try {
+					CurrentCoursesButtonActionPerformed(evt);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		});
-		
+
 		CourseHistoryButton.setText("Course History");
 		CourseHistoryButton.addActionListener(new java.awt.event.ActionListener(){
 			public void actionPerformed(java.awt.event.ActionEvent evt){
-				CourseHistoryButtonActionPerformed(evt);
+				try {
+					CourseHistoryButtonActionPerformed(evt);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		});
-		
+
 		CurrentStudentsButton.setText("Current Students");
-		CurrentStudentsButton.addActionListener(new java.awt.event.ActionListener(){
-			public void actionPerformed(java.awt.event.ActionEvent evt){
-				CurrentStudentsButtonActionPerformed(evt);
+		CurrentStudentsButton.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				try {
+					CurrentStudentsButtonActionPerformed(evt);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		});
-		
+
 		AddButton.setText("Add Student or Course");
 		AddButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,49 +203,59 @@ public class MainGUI extends javax.swing.JFrame {
 		AddStudentButton.setText("Add Student");
 		AddStudentButton.addActionListener(new java.awt.event.ActionListener(){
 			public void actionPerformed(java.awt.event.ActionEvent evt){
-				AddStudentButtonActionPerformed(evt);
+				try {
+					AddStudentButtonActionPerformed(evt);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
-		
+
 		ClearStudentButton.setText("Clear Fields");
 		ClearStudentButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				ClearStudentButtonActionPerformed(evt);
 			}
 		});
-		
+
 		CloseWindow1Button.setText("Close ");
 		CloseWindow1Button.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				CloseWindow1ButtonActionPerformed(evt);
 			}
 		});
-		
+
 		AddCourseButton.setText("Add Course");
 		AddCourseButton.addActionListener(new java.awt.event.ActionListener(){
 			public void actionPerformed(java.awt.event.ActionEvent evt){
-				AddCourseButtonActionPerformed(evt);
+				try {
+					AddCourseButtonActionPerformed(evt);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
-		
+
 		ClearCourseFieldsButton.setText("Clear Fields");
 		ClearCourseFieldsButton.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				ClearCourseFieldsButtonActionPerformed(evt);
 			}
 		});
-		
+
 		CloseWindow2Button.setText("Close");
 		CloseWindow2Button.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
 				CloseWindow2ButtonActionPerformed(evt);
 			}
 		});
-		
+
 		/*----------------------------------------------------------------------------------------------------------*/
 		/*-----------------------------------------------  TEXT FIELDS!  -------------------------------------------*/
 		/*----------------------------------------------------------------------------------------------------------*/
-		
+
 		FNameTextField.setText("First Name");
 		FNameTextField.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 		FNameTextField.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -228,7 +263,7 @@ public class MainGUI extends javax.swing.JFrame {
 				FNameTextFieldMouseClicked(evt);
 			}
 		});
-		
+
 		LNameTextField.setText("Last Name");
 		LNameTextField.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 		LNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -243,7 +278,7 @@ public class MainGUI extends javax.swing.JFrame {
 				SocNmbrTextFieldFocusGained(evt);
 			}
 		});
-		
+
 		CourseNameTextField.setText("Course Name");
 		CourseNameTextField.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 		CourseNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -251,7 +286,7 @@ public class MainGUI extends javax.swing.JFrame {
 				CourseNameTextFieldFocusGained(evt);
 			}
 		});
-		
+
 		CourseCodeTextField.setText("Course Code");
 		CourseCodeTextField.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 		CourseCodeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -266,70 +301,70 @@ public class MainGUI extends javax.swing.JFrame {
 				AddFirstNameTextFieldFocusGained(evt);
 			}
 		});
-		
+
 		AddLastNameTextField.setText("Last Name");
 		AddLastNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
 			public void focusGained(java.awt.event.FocusEvent evt) {
 				AddLastNameTextFieldFocusGained(evt);
 			}
 		});
-		
+
 		AddSocNmbrTextField.setText("Social Security Number");
 		AddSocNmbrTextField.addFocusListener(new java.awt.event.FocusAdapter() {
 			public void focusGained(java.awt.event.FocusEvent evt) {
 				AddSocNmbrTextFieldFocusGained(evt);
 			}
 		});
-		
+
 		AddAddressTextField.setText("Address");
 		AddAddressTextField.addFocusListener(new java.awt.event.FocusAdapter() {
 			public void focusGained(java.awt.event.FocusEvent evt) {
 				AddAddressTextFieldFocusGained(evt);
 			}
 		});
-		
+
 		AddCityTextField.setText("City");
 		AddCityTextField.addFocusListener(new java.awt.event.FocusAdapter() {
 			public void focusGained(java.awt.event.FocusEvent evt) {
 				AddCityTextFieldFocusGained(evt);
 			}
 		});
-		
+
 		AddZipTextField.setText("Zip Code");
 		AddZipTextField.addFocusListener(new java.awt.event.FocusAdapter() {
 			public void focusGained(java.awt.event.FocusEvent evt) {
 				AddZipTextFieldFocusGained(evt);
 			}
 		});
-		
+
 		AddPhoneNmbrTextField.setText("Phone Number");
 		AddPhoneNmbrTextField.addFocusListener(new java.awt.event.FocusAdapter() {
 			public void focusGained(java.awt.event.FocusEvent evt) {
 				AddPhoneNmbrTextFieldFocusGained(evt);
 			}
 		});
-		
+
 		AddEmailTextField.setText("Email");
 		AddEmailTextField.addFocusListener(new java.awt.event.FocusAdapter() {
 			public void focusGained(java.awt.event.FocusEvent evt) {
 				AddEmailTextFieldFocusGained(evt);
 			}
 		});
-		
+
 		AddCourseCodeTextField.setText("Course Code");
 		AddCourseCodeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
 			public void focusGained(java.awt.event.FocusEvent evt) {
 				AddCourseCodeTextFieldFocusGained(evt);
 			}
 		});
-		
+
 		AddCourseNameTextField.setText("Course Name");
 		AddCourseNameTextField.addFocusListener(new java.awt.event.FocusAdapter() {
 			public void focusGained(java.awt.event.FocusEvent evt) {
 				AddCourseNameTextFieldFocusGained(evt);
 			}
 		});
-		
+
 		AddCourseCreditsTextField.setText("Course Credits");
 		AddCourseCreditsTextField.addFocusListener(new java.awt.event.FocusAdapter() {
 			public void focusGained(java.awt.event.FocusEvent evt) {
@@ -340,14 +375,14 @@ public class MainGUI extends javax.swing.JFrame {
 		/*----------------------------------------------------------------------------------------------------------*/
 		/*------------------------------------------------ PANES! --------------------------------------------------*/
 		/*----------------------------------------------------------------------------------------------------------*/
-		
+
 		AddTabbedPane.addTab("Student", StudentsPanel);
 		AddTabbedPane.addTab("Course", CoursesPanel);
 
 		/*----------------------------------------------------------------------------------------------------------*/
 		/*------------------------------------------------ LABELS! -------------------------------------------------*/
 		/*----------------------------------------------------------------------------------------------------------*/
-		
+
 		StudentLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 		StudentLabel.setText("STUDENTS");
 		CoursesLabel.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -358,115 +393,137 @@ public class MainGUI extends javax.swing.JFrame {
 		/*----------------------------------------------------------------------------------------------------------*/
 		/*----------------------------------------------- INFO BOX! ------------------------------------------------*/
 		/*----------------------------------------------------------------------------------------------------------*/
-		
+
 		InfoBox.setViewportView(jTextArea1);
 
 		/*----------------------------------------------------------------------------------------------------------*/
 		/*--------------------------------------------- STUDENT TABLE! ---------------------------------------------*/
 		/*----------------------------------------------------------------------------------------------------------*/
 
-        StudentTable.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        StudentTable.setModel(StudentModel = new DefaultTableModel(new Object [][] {
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null},
-        														  {null, null, null, null, null, null, null, null}},
-            new String [] {
-                "First Name", "Last Name", "Soc. Number", "Address", "City", "Zip", "Telephone Number", "Email"
-            }) { Class[] types = new Class [] {
-            			java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
-            			java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
+		StudentTable.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+		StudentTable.setModel(StudentModel = new DefaultTableModel(new Object [][] {
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null},
+				{null, null, null, null, null, null, null, null}},
+				new String [] {
+				"First Name", "Last Name", "Soc. Number", "Address", "City", "Zip", "Telephone Number", "Email"
+		}) { Class[] types = new Class [] {
+				java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+				java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+		};
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        
-        StudentTable.getTableHeader().setReorderingAllowed(false);
-        StudentTableScrollPane.setViewportView(StudentTable);
-        StudentTable.getColumnModel().getColumn(0).setHeaderValue("First Name");
-        StudentTable.getColumnModel().getColumn(1).setHeaderValue("Last Name");
-        StudentTable.getColumnModel().getColumn(2).setHeaderValue("Soc. Number");
-        StudentTable.getColumnModel().getColumn(3).setHeaderValue("Address");
-        StudentTable.getColumnModel().getColumn(4).setHeaderValue("City");
-        StudentTable.getColumnModel().getColumn(5).setHeaderValue("Zip");
-        StudentTable.getColumnModel().getColumn(6).setHeaderValue("Telephone Number");
-        StudentTable.getColumnModel().getColumn(7).setHeaderValue("Email");
-        
+		public Class getColumnClass(int columnIndex) {
+			return types [columnIndex];
+		}
+		});
+
+		StudentTable.getTableHeader().setReorderingAllowed(false);
+		StudentTableScrollPane.setViewportView(StudentTable);
+		StudentTable.getColumnModel().getColumn(0).setHeaderValue("First Name");
+		StudentTable.getColumnModel().getColumn(1).setHeaderValue("Last Name");
+		StudentTable.getColumnModel().getColumn(2).setHeaderValue("Soc. Number");
+		StudentTable.getColumnModel().getColumn(3).setHeaderValue("Address");
+		StudentTable.getColumnModel().getColumn(4).setHeaderValue("City");
+		StudentTable.getColumnModel().getColumn(5).setHeaderValue("Zip");
+		StudentTable.getColumnModel().getColumn(6).setHeaderValue("Telephone Number");
+		StudentTable.getColumnModel().getColumn(7).setHeaderValue("Email");
+
+		StudentTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent evt) {
+				try {
+					StudentRowSelected(evt);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
 		/*----------------------------------------------------------------------------------------------------------*/
 		/*---------------------------------------------- COURSE TABLE! ---------------------------------------------*/
 		/*----------------------------------------------------------------------------------------------------------*/
-        
-		 CourseTable.setFont(new java.awt.Font("Dialog", 0, 10));
-		 CourseTable.setModel(CourseModel = new DefaultTableModel(
-		 new Object [][] {
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null},
-		 {null, null, null}
-		 }, new String [] {"Name", "Code", "Credits"}) {
-			 
-		 Class[] types = new Class [] {
-		 java.lang.String.class, java.lang.String.class, java.lang.Integer.class};
-		 
-		 public Class getColumnClass(int columnIndex) {
-		 return types [columnIndex];}});
-		 
-		 CourseTableScrollPane.setViewportView(CourseTable);
-		 CourseTable.getColumnModel().getColumn(0).setHeaderValue("Name");
-		 CourseTable.getColumnModel().getColumn(1).setHeaderValue("Code");
-		 CourseTable.getColumnModel().getColumn(2).setHeaderValue("Credits");
-		 jTextArea1.setEditable(false);
-		 jTextArea1.setColumns(20);
-		 jTextArea1.setRows(5);
-		
+
+		CourseTable.setFont(new java.awt.Font("Dialog", 0, 10));
+		CourseTable.setModel(CourseModel = new DefaultTableModel(
+				new Object [][] {
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null},
+						{null, null, null}
+				}, new String [] {"Name", "Code", "Credits"}) {
+
+			Class[] types = new Class [] {
+					java.lang.String.class, java.lang.String.class, java.lang.Integer.class};
+
+			public Class getColumnClass(int columnIndex) {
+				return types [columnIndex];}});
+
+		CourseTableScrollPane.setViewportView(CourseTable);
+		CourseTable.getColumnModel().getColumn(0).setHeaderValue("Name");
+		CourseTable.getColumnModel().getColumn(1).setHeaderValue("Code");
+		CourseTable.getColumnModel().getColumn(2).setHeaderValue("Credits");
+		jTextArea1.setEditable(false);
+		jTextArea1.setColumns(20);
+		jTextArea1.setRows(5);
+
+		CourseTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent evt) {
+				try {
+					CourseRowSelected(evt);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+
 		/*----------------------------------------------------------------------------------------------------------*/
 		/*--------------------------------------------- LAYOUTS! ---------------------------------------------*/
 		/*----------------------------------------------------------------------------------------------------------*/
-		
+
 		javax.swing.GroupLayout StudentsPanelLayout = new javax.swing.GroupLayout(StudentsPanel);
 		StudentsPanel.setLayout(StudentsPanelLayout);
 		StudentsPanelLayout.setHorizontalGroup(
@@ -491,9 +548,9 @@ public class MainGUI extends javax.swing.JFrame {
 														.addComponent(AddStudentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
 														.addContainerGap(179, Short.MAX_VALUE))
 				);
-		
-		
-		
+
+
+
 		StudentsPanelLayout.setVerticalGroup(
 				StudentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGroup(StudentsPanelLayout.createSequentialGroup()
@@ -522,8 +579,8 @@ public class MainGUI extends javax.swing.JFrame {
 												.addContainerGap(24, Short.MAX_VALUE))
 				);
 
-		
-		
+
+
 
 		javax.swing.GroupLayout CoursesPanelLayout = new javax.swing.GroupLayout(CoursesPanel);
 		CoursesPanel.setLayout(CoursesPanelLayout);
@@ -544,10 +601,10 @@ public class MainGUI extends javax.swing.JFrame {
 												.addComponent(CloseWindow2Button, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
 												.addGap(179, 179, 179))
 				);
-		
-		
-		
-		
+
+
+
+
 		CoursesPanelLayout.setVerticalGroup(
 				CoursesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGroup(CoursesPanelLayout.createSequentialGroup()
@@ -565,26 +622,26 @@ public class MainGUI extends javax.swing.JFrame {
 						.addComponent(CloseWindow2Button)
 						.addGap(25, 25, 25))
 				);
-		
-		
-		
+
+
+
 		javax.swing.GroupLayout AddDialogLayout = new javax.swing.GroupLayout(AddDialog.getContentPane());
 		AddDialog.getContentPane().setLayout(AddDialogLayout);
 		AddDialogLayout.setHorizontalGroup(
 				AddDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addComponent(AddTabbedPane)
 				);
-		
-		
-		
+
+
+
 		AddDialogLayout.setVerticalGroup(
 				AddDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addComponent(AddTabbedPane)
 				);
-		
-		
-		
-		
+
+
+
+
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
@@ -645,10 +702,10 @@ public class MainGUI extends javax.swing.JFrame {
 																																				.addComponent(RegisterButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
 																																				.addContainerGap(62, Short.MAX_VALUE))
 				);
-		
-		
-		
-		
+
+
+
+
 		layout.setVerticalGroup(
 				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGroup(layout.createSequentialGroup()
@@ -695,132 +752,180 @@ public class MainGUI extends javax.swing.JFrame {
 				);
 		pack();
 	}
-	
+
 	/*----------------------------------------------------------------------------------------------------------*/
 	/*----------------------------------------------- METHODS! -------------------------------------------------*/
 	/*----------------------------------------------------------------------------------------------------------*/
-	
+
 	private void FNameTextFieldMouseClicked(java.awt.event.MouseEvent evt) {
-		// CLEARS FIRST NAME SEARCH FIELD WHEN CLICKED BC FOCUSED ON START
 		FNameTextField.setText("");
 	}
-	
+
 	private void LNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {
-		//CLEARS LAST NAME SEARCH FIELD IN MAIN WINDOW WHEN FOCUSED
 		LNameTextField.setText("");
 	}
-	
+
 	private void SocNmbrTextFieldFocusGained(java.awt.event.FocusEvent evt) {
-		//CLEARS SOCIAL SECURITY NUMBER SEARCH FIELD IN MAIN WINDOW WHEN FOCUSED
 		SocNmbrTextField.setText("");
 	}
-	
+
 	private void CourseNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {
-		//CLEARS COURSE NAME SEARCH FIELD IN MAIN WINDOW WHEN FOCUSED
 		CourseNameTextField.setText("");
 	}
-	
+
 	private void CourseCodeTextFieldFocusGained(java.awt.event.FocusEvent evt) {
-		//CLEARS COURSE CODE SEARCH FIELD IN MAIN WINDOW WHEN FOCUSED
 		CourseCodeTextField.setText("");
 	}
-	
+
 	private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		//OPENS ADD STUDENT OR COURSE WINDOW
 		AddDialog.setVisible(true);
 		AddDialog.setSize(350,350);
 	}
-	
+
 	private void SearchStudentButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
-		
+
 		StudentModel.setRowCount(0); // DELETES ALL ROWS!
-		
-		if(SocNmbrTextField.getText().equals("") || SocNmbrTextField.getText().equals("Soc. Nmbr")) {
-			StudentTable.setModel(controller.getAllStudents(StudentModel)); 
+
+		if( (SocNmbrTextField.getText().equals("") || SocNmbrTextField.getText().equals("Soc. Nmbr"))
+				& (LNameTextField.getText().equals("") || LNameTextField.getText().equals("Last Name"))
+				& (FNameTextField.getText().equals("") || FNameTextField.getText().equals("First Name")))
+		{ 
+			StudentTable.setModel(controller.getAllStudentsWEmail(StudentModel));
 		}
-		
+
+		else if( (SocNmbrTextField.getText().equals("") || SocNmbrTextField.getText().equals("Soc. Nmbr"))
+				& (FNameTextField.getText().equals("") || FNameTextField.getText().equals("First Name")))
+		{	
+			String searchLastName = LNameTextField.getText();
+			StudentTable.setModel(controller.getStudentByLastName(searchLastName, StudentModel));
+		}
+
+		else if( (FNameTextField.getText().equals("") || FNameTextField.getText().equals("First Name"))
+				& (LNameTextField.getText().equals("") || LNameTextField.getText().equals("Last Name")))
+		{
+			String searchSocNmbr = SocNmbrTextField.getText();
+			StudentTable.setModel(controller.getStudentWEmail(searchSocNmbr, StudentModel));
+		}
+
 		else {
-			String socNmbr = SocNmbrTextField.getText();
-			StudentTable.setModel(controller.getStudent(socNmbr, StudentModel)); 
+			String searchFirstName = FNameTextField.getText();
+			StudentTable.setModel(controller.getStudentByFirstName(searchFirstName, StudentModel));
+
 		}
-	}
-	
+	}		
+
 	private void SearchCourseButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
+
+	CourseModel.setRowCount(0); // DELETES ALL ROWS!
 		
-		CourseModel.setRowCount(0); // DELETES ALL ROWS!
-		
-		if(CourseCodeTextField.getText().equals("") || CourseCodeTextField.getText().equals("Course Code")) {
+		if((CourseCodeTextField.getText().equals("") || CourseCodeTextField.getText().equals("Course Code"))
+			&& (CourseNameTextField.getText().equals("") || CourseNameTextField.getText().equals("Course Name"))){
 			CourseTable.setModel(controller.getAllCourses(CourseModel)); 
+		}
+		else if( CourseCodeTextField.getText().equals("") || CourseCodeTextField.getText().equals("Course Code")){
+				String courseDef = CourseNameTextField.getText();
+				CourseTable.setModel(controller.getCourseByName(courseDef, CourseModel));
 		}
 		
 		else {
 			String courseCode = CourseCodeTextField.getText();
 			CourseTable.setModel(controller.getCourse(courseCode, CourseModel)); 
+			
 		}
 		
 	}
-	
+
 	private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		// NOT IMPLEMENTED!
 	}
-	
-	private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {
-	
-		// IMPLEMENT REGISTER STUDENT METHOD!
-	
+
+	private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
+
+		String socNmbr = (String)StudentTable.getValueAt(StudentTable.getSelectedRow(), 2);
+		String courseCode = (String)CourseTable.getValueAt(CourseTable.getSelectedRow(), 1);
+
+		controller.registerStudentOnCourse(socNmbr, courseCode);
+
 	}
-	
+
 	private void DeleteStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		
+
 		// IMPLEMENT DELETE STUDENT METHOD!
-	
+
 	}
-	
+
 	private void DeleteCourseButtonActionPerformed(java.awt.event.ActionEvent evt){
 
 		// IMPLEMENT DELETE STUDENT METHOD!
-		
+
 	}
-	
+
 	private void GradeStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {
-		
+
 		// IMPLEMENT GRADE STUDENT METHOD!
 
 	}
-	
-	private void StudentHistoryButtonActionPerformed(java.awt.event.ActionEvent evt){
-		
-		// IMPLEMENT STUDENT HISTORY METHOD!
-	
-	}
-	
-	private void CurrentCoursesButtonActionPerformed(java.awt.event.ActionEvent evt){
-		//INSERT ACTION FOR CURRENT COURSES BUTTON
-	}
-	
-	private void CourseHistoryButtonActionPerformed(java.awt.event.ActionEvent evt){
 
-		
-		
-		
-		
+	private void StudentHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
+		CourseModel.setRowCount(0); // DELETES ALL ROWS!
+		String socNmbr = (String)StudentTable.getValueAt(StudentTable.getSelectedRow(), 2);
+		CourseTable.setModel(controller.getStudentHistory(socNmbr, CourseModel)); 
 	}
-	
-	private void CurrentStudentsButtonActionPerformed(java.awt.event.ActionEvent evt){
-		//INSERT ACTION FOR CURRENT STUDENTS BUTTON
+
+	private void CurrentCoursesButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
+		CourseModel.setRowCount(0); // DELETES ALL ROWS!
+		String socNmbr = (String)StudentTable.getValueAt(StudentTable.getSelectedRow(), 2);
+		CourseTable.setModel(controller.getActiveCourses(socNmbr, CourseModel)); 	
 	}
-	
+
+	private void CourseHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
+		StudentModel.setRowCount(0); // DELETES ALL ROWS!
+		String courseCode = (String)CourseTable.getValueAt(CourseTable.getSelectedRow(), 1);
+		StudentTable.setModel(controller.getCourseHistory(courseCode, StudentModel)); 
+	}
+
+	private void CurrentStudentsButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException{
+		StudentModel.setRowCount(0); // DELETES ALL ROWS!
+		String courseCode = (String)CourseTable.getValueAt(CourseTable.getSelectedRow(), 1);
+		StudentTable.setModel(controller.getActiveStudents(courseCode, StudentModel)); 
+	}
+
+	private void StudentRowSelected(ListSelectionEvent evt) throws SQLException {
+
+		/*		String socNmbr = (String)StudentTable.getValueAt(CourseTable.getSelectedRow(), 2);
+		String courseCode = (String)CourseTable.getValueAt(CourseTable.getSelectedRow(), 1);
+
+		Integer gradeAPercentage = controller.getHighGradePercentage(courseCode);
+		Integer courseThroughput = controller.getCourseThroughput(courseCode);
+
+		jTextArea1.setText("Student with grade A: " + gradeAPercentage + " %." + "\n" +
+						   "Course throughput: " + courseThroughput + "%.");
+		 */
+	}
+
+	private void CourseRowSelected(ListSelectionEvent evt) throws SQLException {
+
+		/*		String courseCode = (String)CourseTable.getValueAt(CourseTable.getSelectedRow(), 1);
+
+		Integer gradeAPercentage = controller.getHighGradePercentage(courseCode);
+		Integer courseThroughput = controller.getCourseThroughput(courseCode);
+
+		jTextArea1.setText("Student with grade A: " + gradeAPercentage + " %." + "\n" +
+						   "Course throughput: " + courseThroughput + "%."); */
+
+	}
+
 	//METHODS IN ADD STUDENT OR COURSE WINDOW
 	private void CloseWindow1ButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		//CLOSES ADD STUDENT OR COURSE WINDOW FROM STUDENT TAB
 		AddDialog.setVisible(false);
 	}
-	
+
 	private void CloseWindow2ButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		//CLOSES ADD STUDENT OR COURSE WINDOW FROM COURSE TAB
 		AddDialog.setVisible(false);
 	}
-	
+
 	private void ClearStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		//CLEAR ALL FIELDS IN ADD STUDENT TAB
 		AddFirstNameTextField.setText("First Name");
@@ -832,81 +937,156 @@ public class MainGUI extends javax.swing.JFrame {
 		AddPhoneNmbrTextField.setText("Telephone Number");
 		AddEmailTextField.setText("Email");
 	}
-	
+
 	private void ClearCourseFieldsButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		//CLEAR ALL FIELDS IN ADD COURSE TAB
 		AddCourseCodeTextField.setText("Course Code");
 		AddCourseNameTextField.setText("Course Name");
 		AddCourseCreditsTextField.setText("Course Credits");
 	}
-	
+
 	private void AddFirstNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {
 		//CLEARS FIRST NAME FIELD IN ADD STUDENT TAB WHEN FOCUSED
 		AddFirstNameTextField.setText("");
 	}
-	
+
 	private void AddLastNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {
 		//CLEARS LAST NAME FIELD IN ADD STUDENT TAB WHEN FOCUSED
 		AddLastNameTextField.setText("");
 	}
-	
+
 	private void AddSocNmbrTextFieldFocusGained(java.awt.event.FocusEvent evt) {
 		//CLEARS SOCIAL SECURITY NUMBER FIELD IN ADD STUDENT TAB WHEN FOCUSED
 		AddSocNmbrTextField.setText("");
 	}
-	
+
 	private void AddAddressTextFieldFocusGained(java.awt.event.FocusEvent evt) {
 		//CLEARS ADDRESS FIELD IN ADD STUDENT TAB WHEN FOCUSED
 		AddAddressTextField.setText("");
 	}
-	
+
 	private void AddCityTextFieldFocusGained(java.awt.event.FocusEvent evt) {
 		//CLEARS CITY FIELD IN ADD STUDENT TAB WHEN FOCUSED
 		AddCityTextField.setText("");
 	}
-	
+
 	private void AddZipTextFieldFocusGained(java.awt.event.FocusEvent evt) {
 		//CLEARS ZIP CODE FIELD IN ADD STUDENT TAB WHEN FOCUSED
 		AddZipTextField.setText("");
 	}
-	
+
 	private void AddPhoneNmbrTextFieldFocusGained(java.awt.event.FocusEvent evt) {
 		//CLEARS PHONE NUMBER FIELD IN ADD STUDENT TAB WHEN FOCUSED
 		AddPhoneNmbrTextField.setText("");
 	}
-	
+
 	private void AddEmailTextFieldFocusGained(java.awt.event.FocusEvent evt) {
 		//CLEARS EMAIL FIELD IN ADD STUDENT TAB WHEN FOCUSED
 		AddEmailTextField.setText("");
 	}
-	
+
 	private void AddCourseCodeTextFieldFocusGained(java.awt.event.FocusEvent evt) {
 		//CLEARS COURSE CODE FIELD IN ADD COURSE WHEN FOCUSED
 		AddCourseCodeTextField.setText("");
 	}
-	
+
 	private void AddCourseNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {
 		//CLEARS COURSE NAME FIELD IN ADD COURSE WHEN FOCUSED
 		AddCourseNameTextField.setText("");
 	}
-	
+
 	private void AddCourseCreditsTextFieldFocusGained(java.awt.event.FocusEvent evt) {
 		//CLEARS COURSE CREDITS FIELD IN ADD COURSE WHEN FOCUSED
 		AddCourseCreditsTextField.setText("");
 	}
-	
-	private void AddStudentButtonActionPerformed(java.awt.event.ActionEvent evt){
-		//INSERT ACTION FOR ADD STUDENT BUTTON
+
+	private void AddStudentButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException{
+
+	//ADDS STUDENT TO STUDENT DATABASE W/ PHONE AND EMAIL
+		
+		String firstName = AddFirstNameTextField.getText();
+		String lastName = AddLastNameTextField.getText();
+		String socNmbr = AddSocNmbrTextField.getText();
+		String adress = AddAddressTextField.getText();
+		String city = AddCityTextField.getText();
+		String zipCode = AddZipTextField.getText();
+		String telNmbr = AddPhoneNmbrTextField.getText();
+		String eMail = AddEmailTextField.getText();
+		
+		if(	AddFirstNameTextField.getText().equals("") || AddFirstNameTextField.getText().equals("First Name") ||
+			AddLastNameTextField.getText().equals("") || AddLastNameTextField.getText().equals("Last Name") ||
+			AddSocNmbrTextField.getText().equals("") || AddSocNmbrTextField.getText().equals("Social Security Number") ||
+			AddAddressTextField.getText().equals("") || AddAddressTextField.getText().equals("Address") ||
+			AddCityTextField.getText().equals("") || AddCityTextField.getText().equals("City") ||
+			AddZipTextField.getText().equals("") || AddZipTextField.getText().equals("Zip Code") ||
+			AddPhoneNmbrTextField.getText().equals("") || AddPhoneNmbrTextField.getText().equals("Telephone Number") ||
+			AddEmailTextField.getText().equals("") || AddEmailTextField.getText().equals("Email") ){
+			
+			JOptionPane.showMessageDialog(null, "Make sure You filled out the form correctly.","Something went wrong.", JOptionPane.ERROR_MESSAGE);
+		}
+		else{
+		
+		controller.registerStudent(firstName, lastName, socNmbr, adress, city, zipCode);
+		controller.registerStudentPhone(telNmbr, socNmbr);
+		controller.registerStudentEmail(eMail, socNmbr);
+		JOptionPane.showMessageDialog(null, "Student added to system.","Success", JOptionPane.PLAIN_MESSAGE);
+		AddFirstNameTextField.setText("First Name");
+		AddLastNameTextField.setText("Last Name");
+		AddSocNmbrTextField.setText("Social Security Number");
+		AddAddressTextField.setText("Address");
+		AddCityTextField.setText("City");
+		AddZipTextField.setText("Zip Code");
+		AddPhoneNmbrTextField.setText("Telephone Number");
+		AddEmailTextField.setText("Email");
+		
+		}
+		
+		
 	}
-	
-	private void AddCourseButtonActionPerformed(java.awt.event.ActionEvent evt){
-		//INSERT ACTION FOR ADD COURSE BUTTON
+
+	private void AddCourseButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException{
+
+
+		
+		//ADDS COURSE TO COURSE DATABASE
+		String courseName = AddCourseNameTextField.getText();
+		String courseCode = AddCourseCodeTextField.getText();
+		String courseCredits = AddCourseCreditsTextField.getText();
+		
+		
+		
+		
+		if(		AddCourseCodeTextField.getText().equals("") || AddCourseCodeTextField.getText().equals("Course Code") ||
+				AddCourseNameTextField.getText().equals("") || AddCourseNameTextField.getText().equals("Course Name") ||
+				AddCourseCreditsTextField.getText().equals("") || AddCourseCreditsTextField.getText().equals("Course Credits")) {
+				
+				JOptionPane.showMessageDialog(null, "Make sure You filled out the form correctly.","Something went wrong.", JOptionPane.ERROR_MESSAGE);
+			}
+
+		
+		
+		
+		
+		
+		
+		
+		else{
+		int credits = Integer.parseInt(courseCredits);
+		controller.registerCourse(courseName, courseCode, credits);
+		JOptionPane.showMessageDialog(null, "Course added to system.","Success", JOptionPane.PLAIN_MESSAGE);
+		AddCourseCodeTextField.setText("Course Code");
+		AddCourseNameTextField.setText("Course Name");
+		AddCourseCreditsTextField.setText("Course Credits");
+		}
+		
+		
+		
 	}
-	
+
 	/*----------------------------------------------------------------------------------------------------------*/
 	/*------------------------------------------- OBJECT CREATION! ---------------------------------------------*/
 	/*----------------------------------------------------------------------------------------------------------*/
-	
+
 	private javax.swing.JFormattedTextField AddAddressTextField;
 	private javax.swing.JButton AddButton;
 	private javax.swing.JFormattedTextField AddCityTextField;
@@ -955,5 +1135,5 @@ public class MainGUI extends javax.swing.JFrame {
 	private javax.swing.JPanel StudentsPanel;
 	private javax.swing.JButton UpdateButton;
 	private javax.swing.JTextArea jTextArea1;
-	
+
 }
