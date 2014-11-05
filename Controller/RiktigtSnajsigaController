@@ -1,0 +1,22 @@
+	public void removeStudent(String socNmbr) throws SQLException { // Removes a specific student!
+		dal.removeStudent(socNmbr);
+	}
+	
+	public void gradeStudentOnCourse(String socNmbr, String courseCode, String grade) throws SQLException { //Grades student on a specific course
+		dal.gradeStudentOnCourse(socNmbr, courseCode, grade);
+	}
+	
+	public void removeCourse(String courseCode) throws SQLException { // Removes a specific course!
+		dal.removeCourse(courseCode);
+	}
+	
+	public void registerStudentOnCourseCheck(String socNmbr, String courseCode) throws SQLException {
+		//Check history
+		if ((dal.getTotalStudentCredits(socNmbr) + dal.getCourseCredits(courseCode)) <= 45) {
+			dal.registerStudentOnCourseCheckRecords(socNmbr, courseCode);
+			System.out.println("Student registered!");
+		}
+		else {
+			System.out.println("Total student credits is too high!");
+		}
+	}
