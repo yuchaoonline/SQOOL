@@ -213,3 +213,32 @@ public boolean registerStudentOnCourseCheckIfTaken (String socNmbr, String cours
 		System.out.println("Student added to course!");
 	}
 	
+/* --------------------------------------------------------------------------------------------------------------- */
+	/* --------------------------------------------- GET ALL COURSES! ------------------------------------------------ */
+	/* --------------------------------------------------------------------------------------------------------------- */
+
+	public DefaultTableModel getAllCourses(DefaultTableModel CourseTable) throws SQLException { // Finds all courses!
+
+		con = connectionTest();
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT * FROM Course ORDER BY courseName");
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int columnNbr = metadata.getColumnCount();
+
+		while (resSet.next()) {              
+			int i = 1;
+			while(i <= columnNbr) {
+				String courseName = resSet.getString(i++);
+				String courseNumber = resSet.getString(i++);
+				int credits = resSet.getInt(i++);
+				
+				Object[] courseData = {courseName, courseNumber, credits};
+				
+				CourseTable.addRow(courseData);
+			}
+		}
+
+		return CourseTable;
+		
+		}
