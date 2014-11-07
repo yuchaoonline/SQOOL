@@ -1,0 +1,523 @@
+package DataAccessLayer;
+
+import java.sql.*;
+import java.util.ArrayList;
+
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+public class DAL {
+	
+	Connection con;
+
+	public DAL() throws SQLException {
+
+		driverCheck();
+
+	}
+
+
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ---------------------------------------------- GET ALL EMPLOYEES! ---------------------------------------------- */
+	/* --------------------------------------------------------------------------------------------------------------- */
+
+	public DefaultTableModel getEmployeeContent(DefaultTableModel DataModel) throws SQLException  { // Finds all employees!
+
+		con = connectionTest();
+		
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT * FROM [Demo Database NAV (5-0)].[dbo].[CRONUS Sverige AB$Employee]");
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int numberOfColumns = metadata.getColumnCount();
+
+		while (resSet.next()) {              
+		
+			int i = 1;
+			while(i <= numberOfColumns) {
+				
+				String No_ = resSet.getString(i++);
+				String First Name = resSet.getString(i++);
+				String Last Name = resSet.getString(i++);
+				String Initials = resSet.getString(i++);
+				String Job Title = resSet.getString(i++);
+				String Search Name = resSet.getString(i++);
+				
+				Object[] employeeData = {No_, First Name, Last Name, Initials, Job Title, Search Name};
+				
+				DataModel.addRow(employeeData);
+			}
+		}
+		return DataModel;  		
+	}
+
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* --------------------------------------------- GET ALL EMPLOYEE METADATA! ------------------------------------------------ */
+	/* --------------------------------------------------------------------------------------------------------------- */
+	public DefaultTableModel getEmployeeMetaData(DefaultTableModel DataModel) throws SQLException  { // Finds all employee metadata!
+
+		con = connectionTest();
+		
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT [TABLE_CATALOG], [TABLE_SCHEMA], [TABLE_NAME], [COLUMN_NAME], [DATA_TYPE]  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = [CRONUS Sverige AB$Employee]");
+		
+		return DataModel; 
+
+	}
+	
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* --------------------------------------------- GET ALL DATABASE KEYS! ------------------------------------------------ */
+	/* --------------------------------------------------------------------------------------------------------------- */
+	public DefaultTableModel getDatabaseKeys(DefaultTableModel DataModel) throws SQLException  { // Finds all Database Keys!
+
+		con = connectionTest();
+		
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT OBJECT_NAME(OBJECT_ID),SCHEMA_NAME(schema_id),OBJECT_NAME(parent_object_id),type_desc FROM sys.objects WHERE type_desc IN ('FOREIGN_KEY_CONSTRAINT','PRIMARY_KEY_CONSTRAINT')'");
+		
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int numberOfColumns = metadata.getColumnCount();
+
+		while (resSet.next()) {              
+		
+			int i = 1;
+			while(i <= numberOfColumns) {
+				
+				String NameofConstraint = resSet.getString(i++);
+				String SchemaName = resSet.getString(i++);
+				String TableName = resSet.getString(i++);
+				String ConstraintType = resSet.getString(i++);
+				
+				Object[] DatabaseKeys = {NameofConstraint, SchemaName, TableName, ConstraintType,};
+				
+				DataModel.addRow(DatabaseKeys);
+			}
+		}
+		
+		return DataModel; 
+	}
+	
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ---------------------------------------------- GET ALL DATABASE INDEXES! ---------------------------------------------- */
+	/* --------------------------------------------------------------------------------------------------------------- */
+	
+	public DefaultTableModel getDatabaseIndexes(DefaultTableModel DataModel) throws SQLException  { // Finds all Database Indexes!
+
+		con = connectionTest();
+		
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT so.name, si.name, si.type_desc FROM sys.indexes si JOIN sys.objects so ON si.[object_id] = so.[object_id] WHERE so.type = 'U' ORDER BY so.name, si.type");
+		
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int numberOfColumns = metadata.getColumnCount();
+
+		while (resSet.next()) {              
+		
+			int i = 1;
+			while(i <= numberOfColumns) {
+				
+				String TableName = resSet.getString(i++);
+				String IndexName = resSet.getString(i++);
+				String IndexType = resSet.getString(i++);
+				
+				Object[] DatabaseIndexes = {TableName, IndexName, IndexType};
+				
+				DataModel.addRow(DatabaseIndexes);
+			}
+		}
+		
+		return DataModel; 
+	}
+	
+	
+	
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ---------------------------------------------- GET ALL TABLE CONSTRAINTS! ---------------------------------------------- */
+	/* --------------------------------------------------------------------------------------------------------------- */
+	
+	public DefaultTableModel getTableConstraints(DefaultTableModel DataModel) throws SQLException  { // Finds all TABLE CONSTRAINTS!
+
+		con = connectionTest();
+		
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS");
+		
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int numberOfColumns = metadata.getColumnCount();
+
+		while (resSet.next()) {              
+		
+			int i = 1;
+			while(i <= numberOfColumns) {
+				
+				String CONSTRAINT_NAME = resSet.getString(i++);
+				String CONSTRAINT_TYPE = resSet.getString(i++);
+				String TABLE_NAME = resSet.getString(i++);
+				
+				Object[] TableConstraints = {CONSTRAINT_NAME, CONSTRAINT_TYPE, TABLE_NAME};
+				
+				DataModel.addRow(TableConstraints);
+			}
+		}
+		
+		return DataModel; 
+	}
+	
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ---------------------------------------------- GET ALL TABLES! ---------------------------------------------- */
+	/* --------------------------------------------------------------------------------------------------------------- */
+	
+	public DefaultTableModel getAllTables(DefaultTableModel DataModel) throws SQLException  { // Finds all TABLES
+
+		con = connectionTest();
+		
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT * FROM information_schema.tables");
+		
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int numberOfColumns = metadata.getColumnCount();
+
+		while (resSet.next()) {              
+		
+			int i = 1;
+			while(i <= numberOfColumns) {
+				
+				String TABLE_CATALOG = resSet.getString(i++);
+				String TABLE_SCHEMA = resSet.getString(i++);
+				String TABLE_NAME = resSet.getString(i++);
+				String TABLE_TYPE = resSet.getString(i++);
+				
+				Object[] AllTables = {TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME, TABLE_TYPE};
+				
+				DataModel.addRow(AllTables);
+			}
+		}
+		
+		return DataModel; 
+	}
+	
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ---------------------------------------------- GET ALL COLUMNS! ---------------------------------------------- */
+	/* --------------------------------------------------------------------------------------------------------------- */
+	public DefaultTableModel getAllColumns(DefaultTableModel DataModel) throws SQLException  { // Finds all COLUMNS
+
+		con = connectionTest();
+		
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT name FROM sys.columns  WHERE object_id = OBJECT_ID ('CRONUS Sverige AB$Employee') ORDER BY column_id");
+		
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int numberOfColumns = metadata.getColumnCount();
+
+		while (resSet.next()) {              
+		
+			int i = 1;
+			while(i <= numberOfColumns) {
+				
+				String column names = resSet.getString(i++);
+				
+				
+				Object[] AllColumns = {column names};
+				
+				DataModel.addRow(AllColumns);
+			}
+		}
+		
+		return DataModel; 
+	}
+	
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ---------------------------------------------- GET TABLE WITH MOST ROWS! ---------------------------------------------- */
+	/* --------------------------------------------------------------------------------------------------------------- */
+	
+	public DefaultTableModel getTableMostRows(DefaultTableModel DataModel) throws SQLException  { // Finds table with most rows
+
+		con = connectionTest();
+		
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT top 1 [TableName] = so.name, [RowCount] = MAX(si.rows)  FROM sysobjects so, sysindexes si  WHERE so.xtype = 'U' AND si.id = OBJECT_ID(so.name) GROUP BY so.name ORDER BY 2 DESC");
+		
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int numberOfColumns = metadata.getColumnCount();
+
+		while (resSet.next()) {              
+		
+			int i = 1;
+			while(i <= numberOfColumns) {
+				
+				
+				
+				String TableName = resSet.getString(i++);
+				String RowCount = resSet.getString(i++);
+				
+				
+				Object[] TableMostRows = {TableName, RowCount};
+				
+				DataModel.addRow(TableMostRows);
+			}
+		}
+		
+		return DataModel; 
+	}
+	
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ---------------------------------------------- GET ABSENCE CONTENT! ---------------------------------------------- */
+	/* --------------------------------------------------------------------------------------------------------------- */
+	
+	public DefaultTableModel getAbsenceContent(DefaultTableModel DataModel) throws SQLException  { // Finds table with most rows
+
+		con = connectionTest();
+		
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT [Employee No_], [From Date], [To Date], [Cause of Absence], [Description] FROM [CRONUS Sverige AB$Employee Absence] ");
+		
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int numberOfColumns = metadata.getColumnCount();
+
+		while (resSet.next()) {              
+		
+			int i = 1;
+			while(i <= numberOfColumns) {
+				
+				
+				
+				String [Employee No_] = resSet.getString(i++);
+				String [From Date] = resSet.getString(i++);
+				String [To Date] = resSet.getString(i++);
+				String [Cause of Absence] = resSet.getString(i++);
+				String [Description] = resSet.getString(i++);
+				
+				Object[] AbsenceContent = {[Employee No_], [From Date], [To Date], [Cause of Absence], [Description]};
+				
+				DataModel.addRow(AbsenceContent);
+			}
+		}
+		
+		return DataModel; 
+	}
+	
+	
+	
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ---------------------------------------------- GET RELATIVE CONTENT! ---------------------------------------------- */
+	/* --------------------------------------------------------------------------------------------------------------- */
+	public DefaultTableModel getRelativeContent(DefaultTableModel DataModel) throws SQLException  { // Finds table with most rows
+
+		con = connectionTest();
+		
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT [Employee No_], [Relative Code], [First Name], [Last Name], [Birth Date] FROM [CRONUS Sverige AB$Employee Relative]");
+		
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int numberOfColumns = metadata.getColumnCount();
+
+		while (resSet.next()) {              
+		
+			int i = 1;
+			while(i <= numberOfColumns) {
+				
+				
+				
+				String [Employee No_] = resSet.getString(i++);
+				String [Relative Code] = resSet.getString(i++);
+				String [First Name] = resSet.getString(i++);
+				String [Last Name] = resSet.getString(i++);
+				String [Birth Date] = resSet.getString(i++);
+				
+				
+				Object[] RelativeContent = {[Employee No_], [Relative Code], [First Name], [Last Name], [Birth Date] };
+				
+				DataModel.addRow(RelativeContent);
+			}
+		}
+		
+		return DataModel; 
+	}
+	
+	
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ---------------------------------------------- GET QUALIFICATION CONTENT! ---------------------------------------------- */
+	/* --------------------------------------------------------------------------------------------------------------- */
+	public DefaultTableModel getQualificationContent(DefaultTableModel DataModel) throws SQLException  { // Finds table with most rows
+
+		con = connectionTest();
+		
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT [Employee No_], [Qualification Code], [From Date], [To Date], [Description] FROM [CRONUS Sverige AB$Employee Qualification]");
+		
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int numberOfColumns = metadata.getColumnCount();
+
+		while (resSet.next()) {              
+		
+			int i = 1;
+			while(i <= numberOfColumns) {
+				
+				
+				
+				String [Employee No_] = resSet.getString(i++);
+				String [Qualification Code] = resSet.getString(i++);
+				String [From Date] = resSet.getString(i++);
+				String [To Date] = resSet.getString(i++);
+				String [Description] = resSet.getString(i++);
+				
+				
+				Object[] QualificationContent = {[Employee No_], [Qualification Code], [From Date], [To Date], [Description] };
+				
+				DataModel.addRow(QualificationContent);
+			}
+		}
+		
+		return DataModel; 
+	}
+	
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ---------------------------------------------- GET ABSENCE METADATA! ---------------------------------------------- */
+	/* --------------------------------------------------------------------------------------------------------------- */
+	public DefaultTableModel getAbsenceMetadata(DefaultTableModel DataModel) throws SQLException  { // Finds table with most rows
+
+		con = connectionTest();
+		
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT [TABLE_CATALOG], [TABLE_SCHEMA], [TABLE_NAME], [COLUMN_NAME], [DATA_TYPE]  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = [CRONUS Sverige AB$Employee Absence]");
+		
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int numberOfColumns = metadata.getColumnCount();
+
+		while (resSet.next()) {              
+		
+			int i = 1;
+			while(i <= numberOfColumns) {
+				
+				
+				
+				String TableName = resSet.getString(i++);
+				String RowCount = resSet.getString(i++);
+				
+				
+				Object[] AbsenceMetadata = {TableName, RowCount};
+				
+				DataModel.addRow(AbsenceMetadata);
+			}
+		}
+		
+		return DataModel; 
+	}
+	
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ---------------------------------------------- GET RELATIVE METADATA! ---------------------------------------------- */
+	/* --------------------------------------------------------------------------------------------------------------- */
+	public DefaultTableModel getRelativeMetadata(DefaultTableModel DataModel) throws SQLException  { // Finds table with most rows
+
+		con = connectionTest();
+		
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT [TABLE_CATALOG], [TABLE_SCHEMA], [TABLE_NAME], [COLUMN_NAME], [DATA_TYPE]  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = [CRONUS Sverige AB$Employee Relative]");
+		
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int numberOfColumns = metadata.getColumnCount();
+
+		while (resSet.next()) {              
+		
+			int i = 1;
+			while(i <= numberOfColumns) {
+				
+				
+				
+				String TableName = resSet.getString(i++);
+				String RowCount = resSet.getString(i++);
+				
+				
+				Object[] RelativeMetadata = {TableName, RowCount};
+				
+				DataModel.addRow(RelativeMetadata);
+			}
+		}
+		
+		return DataModel; 
+	}
+	
+	
+	/* --------------------------------------------------------------------------------------------------------------- */
+	/* ---------------------------------------------- GET QUALIFICATION METADATA! ---------------------------------------------- */
+	/* --------------------------------------------------------------------------------------------------------------- */
+	public DefaultTableModel getQualificationMetadata(DefaultTableModel DataModel) throws SQLException  { // Finds table with most rows
+
+		con = connectionTest();
+		
+		PreparedStatement prepStmnt = con.prepareStatement("SELECT [TABLE_CATALOG], [TABLE_SCHEMA], [TABLE_NAME], [COLUMN_NAME], [DATA_TYPE]  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = [CRONUS Sverige AB$Employee Qualification]");
+		
+		ResultSet resSet = prepStmnt.executeQuery();
+
+		ResultSetMetaData metadata = resSet.getMetaData();
+		int numberOfColumns = metadata.getColumnCount();
+
+		while (resSet.next()) {              
+		
+			int i = 1;
+			while(i <= numberOfColumns) {
+				
+				
+				
+				String TableName = resSet.getString(i++);
+				String RowCount = resSet.getString(i++);
+				
+				
+				Object[] QualificationMetadata = {TableName, RowCount};
+				
+				DataModel.addRow(QualificationMetadata);
+			}
+		}
+		
+		return DataModel; 
+	}
+	
+	
+	/* ------------------------------------ */
+	/* ---- DATABASE CONNECTION TESTING! --- */
+	/* ------------------------------------ */
+
+	public void driverCheck() {
+
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");	
+		}
+
+		catch (ClassNotFoundException cnfe) {
+			System.out.println("Driver is not functioning properly! " +
+							   "Error message:" + cnfe.getMessage());
+		}
+	}
+
+	public Connection connectionTest() {
+
+		try { 
+			con = DriverManager.getConnection("jdbc:sqlserver://oxeiuqtake.database.windows.net;" + 
+					"database = SQOOL_db;" + 
+					"user = SQOOL_user;" + 
+					"password = Hj34rT11"); 
+
+			System.out.println("Connection successfull!"); 
+		}
+
+		catch (Exception e) {
+
+			System.out.println("Error establishing connection! Please try again later...");
+			e.printStackTrace();
+			System.out.println(e.getMessage()); 
+		}
+
+		return con;
+	}
+
+}
