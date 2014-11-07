@@ -1,0 +1,63 @@
+package Controller;
+
+import java.sql.*;
+import java.util.ArrayList;
+
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
+import DataAccessLayer.DAL;
+
+public class Controller {
+
+	public DAL dal;
+	
+	public Controller() throws SQLException {
+		dal = new DAL();
+	}
+	
+	public DefaultTableModel getEmployeeContent(DefaultTableModel DataModel) throws SQLException {
+		return dal.getEmployeeContent(DataModel);
+	}
+	public DefaultTableModel getEmployeeMetaData(DefaultTableModel DataModel) throws SQLException {
+		return dal.getEmployeeMetaData(DataModel);
+	}
+	public DefaultTableModel getDatabaseKeys(DefaultTableModel DataModel) throws SQLException {
+		return dal.getDatabaseKeys(DataModel);
+	}
+	public DefaultTableModel getDatabaseIndexes(DefaultTableModel DataModel) throws SQLException {
+		return dal.getDatabaseIndexes(DataModel);
+	}
+	public DefaultTableModel getTableConstraints(DefaultTableModel DataModel) throws SQLException {
+		return dal.getTableConstraints(DataModel);
+	}
+	public DefaultTableModel getAllTables(DefaultTableModel DataModel) throws SQLException {
+		return dal.getAllTables(DataModel);
+	}
+	public DefaultTableModel getAllColumns(DefaultTableModel DataModel) throws SQLException {
+		return dal.getAllColumns(DataModel);
+	}
+	
+	public DefaultTableModel getTableMostRows(DefaultTableModel DataModel) throws SQLException {
+		return dal.getTableMostRows(DataModel);
+	}
+	public DefaultTableModel getAbsenceContent(DefaultTableModel DataModel) throws SQLException {
+		return dal.getAbsenceContent(DataModel);
+	}
+	public DefaultTableModel getRelativeContent(DefaultTableModel DataModel) throws SQLException {
+		return dal.getRelativeContent(DataModel);
+	}
+	public DefaultTableModel getQualificationContent(DefaultTableModel DataModel) throws SQLException {
+		return dal.getQualificationContent(DataModel);
+	}
+	public DefaultTableModel getAbsenceMetadata(DefaultTableModel DataModel) throws SQLException {
+		return dal.getAbsenceMetadata(DataModel);
+	}
+	public DefaultTableModel getRelativeMetadata(DefaultTableModel DataModel) throws SQLException {
+		return dal.getRelativeMetadata(DataModel);
+	}
+	public DefaultTableModel getQualificationMetadata(DefaultTableModel DataModel) throws SQLException {
+		return dal.getQualificationMetadata(DataModel);
+	}
+
+	}
