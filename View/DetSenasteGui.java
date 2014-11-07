@@ -1,3 +1,24 @@
+AddFirstNameTextField.setText("First Name");
+		AddFirstNameTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				AddFirstNameTextFieldMouseClicked(evt);
+			}
+		});
+private void AddFirstNameTextFieldMouseClicked(java.awt.event.MouseEvent evt) {
+		//CLEARS FIRST NAME FIELD IN ADD STUDENT TAB WHEN FOCUSED
+		AddFirstNameTextField.setText("");		
+		
+AddCourseCodeTextField.setText("Course Code");
+AddCourseCodeTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+public void mouseClicked(java.awt.event.MouseEvent evt) {
+ddCourseCodeTextFieldMouseClicked(evt);
+			}
+		});
+		
+private void AddCourseCodeTextFieldMouseClicked(java.awt.event.MouseEvent evt) {
+		//CLEARS COURSE CODE FIELD IN ADD COURSE WHEN FOCUSED
+		AddCourseCodeTextField.setText("");		
+
 private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
 
 		String socNmbr = (String)StudentTable.getValueAt(StudentTable.getSelectedRow(), 2);
